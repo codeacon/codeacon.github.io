@@ -1,6 +1,38 @@
 <!DOCTYPE html>
 <html>
-	<body>
-		<p>Hello, World!</p>
-	</body>
+  <body>
+    <h1>Christmas Name Drawing</h1>
+    <form id="name-form">
+      <input id="name-box"></input>
+      <button type="submit">Go</button>
+    </form>
+    <p id="results"></p>
+  </body>
+  <script>
+    const names = [
+      "cody",
+      "eric",
+      "collin",
+      "arianna",
+      "brendon",
+      "grace",
+      "bridger",
+      "hayleigh",
+      "tennessee",
+    ];
+    const f = document.getElementById("name-form");
+    f.addEventListener("submit", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const nameBox = document.getElementById("name-box");
+      const name = nameBox.value.toLowerCase();
+      if (!names.includes(name)) {
+        alert("Invalid Name! Please try again.");
+      } else {
+        const idx = (names.indexOf(name) + 6) % names.length;
+        const res = document.getElementById("results");
+        res.textContent = `You drew: ${names[idx]}`;
+      }
+    });
+  </script>
 </html>
